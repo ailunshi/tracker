@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom'
 import backArrow from "../assets/arrow_back.svg";
+import { useRegister } from '../context/RegisterContext';
 
 const RegistrationPassword = () => {
+    const { formData, updateFormData } = useRegister();
+
+    
     return (
         <div>
             <Link to="/registration-email">
@@ -9,13 +13,19 @@ const RegistrationPassword = () => {
             </Link>
             <div className="container">
                 <h1 className="frontTitle">Create your password for
-                    <div className="emphasis">jade-isel19@ortiza.com</div>
+                    <div className="emphasis">{formData.email}</div>
                 </h1>
             </div>
 
             <div className="inputContainer">
                 <p className="tightText">Create a password</p>
-                <input type="password" className="input" placeholder="********" />
+                <input 
+                    type="password" 
+                    className="input" 
+                    placeholder="********"
+                    value={formData.password}
+                    onChange={(e) => updateFormData('password', e.target.value)}
+                />
             </div>
 
             <div className="buttonContainer">
