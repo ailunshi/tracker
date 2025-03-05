@@ -1,3 +1,10 @@
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--distant-lilac);
+  color: #000000;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,17 +12,147 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.inputContainer {
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 100px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.login-left {
+  flex: 1;
+  background-color: var(--smoked-verbena);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-right {
+  flex: 1;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50px;
+}
+
+.frontTitle {
+  font-size: 64px;
+  font-weight: 400;
+  margin-bottom: 125px;
+}
+
+.emphasis {
+  color: var(--mulberry);
+  font-weight: 600;
+  font-style: italic;
+}
+
+.smallText {
+  font-size: 20px;
+}
+
+.password-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.vertical-divider {
+  width: 100px;
+  height: auto;
+  display: inline-block;
+}
+
+.horizontal-divider {
+  width: auto;
+  height: 100px;
+  display: inline-block;
+}
+
+.button {
+  position: relative;
+  align-items: center;
+  background-color: var(--smoked-verbena);
+  justify-content: center;
+  color: var(--white);
+  font-family: 'Inter Variable', sans-serif;
+  display: inline-flex;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.button-big {
+  border-radius: 30px;
+  flex-direction: column;
+  gap: 8px;
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+
+  font-size: 32px;
+  font-weight: 500;
+  width: 400px;
+}
+
+.button-small {
+  height: 45px;
+  width: 250px;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 15px;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.input {
+  background-color: var(--white);
+  border: 1px solid;
+  height: 60px;
+  width: 604px;
+  border-radius: 30px;
+  border-color: transparent;
+  padding: 12px 20px;
+  font-size: 30px;
+  font-family: 'Inter Variable', sans-serif;
+  font-weight: 500;
+  border: 1px #c0c0c0 solid;
+}
+
+.tightText{
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.backArrow {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 @keyframes logo-spin {
@@ -35,8 +172,4 @@
 
 .card {
   padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
