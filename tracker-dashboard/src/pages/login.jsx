@@ -23,8 +23,13 @@ const Login = () => {
                 </div>
 
                 <div className="container">
-                    <button className="button button-small">Submit</button>
-                <p className="smallText">Don't have an account yet? <Link to="/registration-name" style={{color: "var(--urgent-indigo)", fontWeight: "bold", textDecorationLine: "underline"}}>Sign up here.</Link></p>
+                    <Link to="/tracker">
+                        <button className="button button-small">Submit</button>
+                    </Link>
+                    <div className="container container-small">
+                    <p className="smallText">Don't have an account yet? <Link to="/registration-name" style={{color: "var(--urgent-indigo)", fontWeight: "bold", textDecorationLine: "underline"}}>Sign up here.</Link></p>
+                    </div>
+                
                 </div>
             </div>
         </div>
