@@ -16,13 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
 from django.contrib.auth.models import User
+from django.urls import path
+from writingsession.views import (
+    login_view,
+    logout_view, 
+    user_info, 
+    get_csrf_token,
+    register_view
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('writingsession.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("writingsession.urls")),
+    path("api-auth/", include("rest_framework.urls")),
+    path("api/login/", login_view, name="login"),
+    path("api/logout/", logout_view, name="logout"),
+    path("api/user/", user_info, name="user-info"),
+    path("api/csrf/", get_csrf_token, name="get-csrf-token"),
+    path("api/register/", register_view, name="register"),
 ]
