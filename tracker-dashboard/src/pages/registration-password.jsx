@@ -3,8 +3,12 @@ import backArrow from "../assets/arrow_back.svg";
 import { useRegister } from '../context/RegisterContext';
 
 const RegistrationPassword = () => {
-    const { formData, updateFormData } = useRegister();
+    const { formData, updateFormData, registerUser, error } = useRegister();
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await registerUser();
+    };
     
     return (
         <div>
@@ -17,23 +21,23 @@ const RegistrationPassword = () => {
                 </h1>
             </div>
 
-            <div className="inputContainer">
-                <p className="tightText">Create a password</p>
-                <input 
-                    type="password" 
-                    className="input" 
-                    placeholder="********"
-                    value={formData.password}
-                    onChange={(e) => updateFormData('password', e.target.value)}
-                />
-            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="inputContainer">
+                    <p className="tightText">Create a password</p>
+                    <input 
+                        type="password" 
+                        className="input" 
+                        placeholder="********"
+                        value={formData.password}
+                        onChange={(e) => updateFormData('password', e.target.value)}
+                    />
+                    {error && <p className="error-message">{error}</p>}
+                </div>
 
-            <div className="buttonContainer">
-                <Link to="/registration-password">
-                    <button className="button button-small">Next</button>
-                </Link>
-            </div>
-            
+                <div className="buttonContainer">
+                    <button type="submit" className="button button-small">Create Account</button>
+                </div>
+            </form>
         </div>
     );
 };

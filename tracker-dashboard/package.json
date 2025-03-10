@@ -13,6 +13,7 @@
     "@fontsource-variable/inter": "^5.2.5",
     "@fontsource-variable/roboto": "^5.2.5",
     "@fontsource/inter": "^5.2.5",
+    "axios": "^1.8.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.2.0"
