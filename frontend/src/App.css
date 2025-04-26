@@ -1,3 +1,10 @@
+/* reset default link styles to override -webkit-any-link */
+a,
+a:link,
+a:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
 
 body {
   font-family: 'Inter', sans-serif;
@@ -6,17 +13,31 @@ body {
 }
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+.circle {
+  width: 400px;
+  height: 400px;
+  background-color: white; /* Optional: Set a background color */
+  border-radius: 50%;
+}
+
+.landing-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
   padding: 20px;
 }
 
@@ -25,11 +46,11 @@ body {
 }
 
 .inputContainer {
-  top: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 25px;
+  width: 80%;
 }
 
 .login-container {
@@ -39,7 +60,7 @@ body {
 }
 
 .login-left {
-  flex: 1;
+  flex: 2;
   background-color: var(--smoked-verbena);
   display: flex;
   flex-direction: column;
@@ -47,20 +68,30 @@ body {
   align-items: center;
 }
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .login-right {
-  flex: 1;
+  flex: 3;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-left: 50px;
+  width: 100%;
 }
 
 .frontTitle {
   font-size: 64px;
   font-weight: 400;
-  margin-bottom: 75px;
+  margin-top: 0px;
+  margin-bottom: 85px;
 }
 
 .emphasis {
@@ -176,4 +207,71 @@ body {
 
 .card {
   padding: 2em;
+}
+
+/* UnderlineInput Component Styles */
+.underline-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.underline-input-label {
+  transition: color 0.3s;
+  color: #4a5568;
+  text-align: left;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.underline-input-label.focused {
+  color: var(--smoked-verbena);
+}
+
+.underline-input-required {
+  color: var(--urgent-indigo);
+}
+
+.underline-input-field {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #d1d5db;
+  outline: none;
+  transition: border-color 0.3s;
+  color: #000000;
+  font-size: 30px;
+}
+
+.underline-input-field.focused {
+  border-color: var(--smoked-verbena);
+}
+
+.underline-input-field.error {
+  border-color: var(--urgent-indigo);
+}
+
+.underline-input-field.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.underline-input-error {
+  color: var(--urgent-indigo);
+}
+
+.underline-input-right-label {
+  font-size: 20px;
+  color: var(--urgent-indigo) !important; /* !important */
+  font-style: italic;
+  text-decoration: none !important; /* !important */
+}
+
+.underline-input-label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
     return (
-        <div>
+        <div className="landing-page-container">
             <h1 className="frontTitle">Writing Productivity Tracker</h1>
 
             <div className="container">
