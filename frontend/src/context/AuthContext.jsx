@@ -12,9 +12,11 @@ export const AuthProvider = ({ children }) => {
 
     const getCsrfToken = async () => {
         try {
-            await fetch('http://localhost:8000/api/csrf/', {
-                credentials: 'include',
+            const response = await fetch('http://localhost:8000/api/csrf/', {
+                credentials: 'include', // ✅ This sets the session cookie
             });
+            const data = await response.json();
+            return data.csrfToken; // ✅ Return the CSRF token
         } catch (error) {
             console.error('Error fetching CSRF token:', error);
         }
@@ -22,24 +24,23 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
-            // First get CSRF token
-            await getCsrfToken();
-
+            const csrfToken = await getCsrfToken(); // ✅ First get CSRF token
+    
             const response = await fetch('http://localhost:8000/api/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken, // ✅ Send CSRF token here
                 },
-                credentials: 'include',
+                credentials: 'include', // ✅ Include session cookie
                 body: JSON.stringify({ username, password }),
             });
-
+    
             if (!response.ok) {
                 throw new Error('Login failed');
             }
-
+    
             setIsAuthenticated(true);
-            // Fetch user data after successful login
             await fetchUserData();
             return true;
         } catch (error) {
@@ -47,6 +48,7 @@ export const AuthProvider = ({ children }) => {
             throw error;
         }
     };
+    
 
     const logout = async () => {
         try {

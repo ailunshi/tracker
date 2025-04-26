@@ -7,6 +7,11 @@ import time
 from multiprocessing import Pool
 from .word_counter import word_count
 
+"""
+This module provides a class to parse a Scrivener project file (.scrivx) and count the words in all pertinent documents
+(ie. excludes word count contained within notes, research, etc.) by using the pypandoc library to convert RTF files to plain text.
+The Scrivener project file is an XML file that contains all information about the project."""
+
 class ScrivxParser:
     def __init__(self, root_folder, scrivx_path):
         self.included_docs = set()
@@ -70,10 +75,3 @@ class ScrivxParser:
         total_word_count = sum(word_counts)
         print(total_word_count)
         return total_word_count
-    
-
-
-
-
-
-
