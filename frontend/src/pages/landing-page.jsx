@@ -5,7 +5,7 @@ const Home = () => {
         <div className="landing-page-container">
             <h1 className="frontTitle">Writing Productivity Tracker</h1>
 
-            <div className="container">
+            <div className="container-horizontal">
                 <Link to="login">
                 <button className="button button-big">Log In</button>
                 </Link>

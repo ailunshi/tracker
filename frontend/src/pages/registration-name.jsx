@@ -5,10 +5,11 @@ const RegistrationName = () => {
     const { formData, updateFormData } = useRegister();
 
     return (
-        <div>
+        <div className="landing-page-container">
             <h1 className="frontTitle">Welcome to tracker!</h1>
 
-            <div className="inputContainer">
+            <div className="container-left">
+            
                 <p className="tightText">What should we call you?</p>
                 <input
                     type="text"
@@ -19,10 +20,12 @@ const RegistrationName = () => {
                 />
             </div>
 
-            <div className="container">
+            <div className="container-submit-button">
+
                 <Link to="/registration-email">
-                    <button className="button button-small">Next</button>
+                    <button className="button button-small mt-5">Next</button>
                 </Link>
+
             </div>
         </div>
         

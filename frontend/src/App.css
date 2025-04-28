@@ -33,12 +33,14 @@ body {
 
 .container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
+}
+
+.container-horizontal {
+  flex-direction: row;
 }
 
 .container-small {
@@ -57,6 +59,21 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
+}
+
+.container-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+
+.container-submit-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
 }
 
 .login-left {
@@ -133,6 +150,9 @@ body {
   display: inline-flex;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
+  outline: none;
+  box-shadow: none;
+  border-style: solid;
 }
 
 .button-big {
@@ -162,7 +182,7 @@ body {
 
 .input {
   background-color: var(--white);
-  border: 1px solid;
+  /*border: 1px solid;*/
   height: 60px;
   width: 604px;
   border-radius: 30px;
@@ -173,6 +193,8 @@ body {
   font-weight: 500;
   border: 1px #c0c0c0 solid;
   color: #000000;
+  outline: none;
+  box-shadow: none;
 }
 
 .tightText{
@@ -188,26 +210,9 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
 
 /* UnderlineInput Component Styles */
 .underline-input-container {
