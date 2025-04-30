@@ -6,7 +6,7 @@ const RegistrationPassword = () => {
     const { formData, updateFormData } = useRegister();
 
     return (
-        <div>
+        <div className="landing-page-container">
             <Link to="/registration-name">
                 <img src={backArrow} alt="back arrow" className="backArrow"/>
             </Link>
@@ -15,7 +15,7 @@ const RegistrationPassword = () => {
                     <div className="emphasis">{formData.name}</div></h1>
             </div>
 
-            <div className="inputContainer">
+            <div className="container-left">
                 <p className="tightText">What's your email?</p>
                 <input 
                     type="text" 
@@ -26,7 +26,7 @@ const RegistrationPassword = () => {
                 />
             </div>
                 
-            <div className="buttonContainer">
+            <div className="container-submit-button">
                 <Link to="/registration-password">
                     <button className="button button-small">Next</button>
                 </Link>

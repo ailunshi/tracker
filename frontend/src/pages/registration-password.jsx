@@ -11,7 +11,7 @@ const RegistrationPassword = () => {
     };
     
     return (
-        <div>
+        <div className="landing-page-container">
             <Link to="/registration-email">
                 <img src={backArrow} alt="back arrow" className="backArrow"/>
             </Link>
@@ -22,7 +22,7 @@ const RegistrationPassword = () => {
             </div>
 
             <form onSubmit={handleSubmit}>
-                <div className="inputContainer">
+                <div className="container-left">
                     <p className="tightText">Create a password</p>
                     <input 
                         type="password" 
@@ -34,8 +34,10 @@ const RegistrationPassword = () => {
                     {error && <p className="error-message">{error}</p>}
                 </div>
 
-                <div className="buttonContainer">
-                    <button type="submit" className="button button-small">Create Account</button>
+                <div className="container-submit-button">
+                    <Link to="/login">
+                        <button type="submit" className="button button-small">Create Account</button>
+                    </Link>
                 </div>
             </form>
         </div>
