@@ -63,6 +63,7 @@ export const RegisterProvider = ({ children }) => {
             }
 
             // Register the user
+
             const response = await fetch('http://localhost:8000/api/register/', {
                 method: 'POST',
                 headers: {
@@ -85,6 +86,8 @@ export const RegisterProvider = ({ children }) => {
             if (!response.ok) {
                 throw new Error(data.error || data.detail || 'Registration failed');
             }
+
+            await login(formData.email, formData.password);
             
             // Clear form data
             setFormData({

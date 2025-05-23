@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Navigate, Link } from 'react-router'
 import backArrow from "../assets/arrow_back.svg";
 import { useRegister } from '../context/RegisterContext';
 
-const RegistrationPassword = () => {
+const RegistrationName = () => {
     const { formData, updateFormData } = useRegister();
 
     return (
@@ -36,4 +36,4 @@ const RegistrationPassword = () => {
     );
 };
 
-export default RegistrationPassword;
+export default RegistrationName;

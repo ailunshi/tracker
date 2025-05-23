@@ -30,6 +30,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("writingsession.urls")),
     path("api-auth/", include("rest_framework.urls")),
+    path('accounts/', include('accounts.urls')),
     path("api/login/", login_view, name="login"),
     path("api/logout/", logout_view, name="logout"),
     path("api/user/", user_info, name="user-info"),

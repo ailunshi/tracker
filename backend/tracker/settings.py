@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'writingsession.apps.WritingSessionConfig',
     'rest_framework',
     'corsheaders',
     'django.contrib.admin',
@@ -40,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'writingsession',
+    'accounts',
+    'user_profile',
 ]
 
 MIDDLEWARE = [
