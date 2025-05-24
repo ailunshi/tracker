@@ -5,9 +5,11 @@ import { useRegister } from '../context/RegisterContext';
 const RegistrationPassword = () => {
     const { formData, updateFormData, registerUser, error } = useRegister();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        await registerUser();
+    const handleSubmit = async () => {
+        const success = await registerUser();
+        if (!success) {
+            console.error("Registration failed.");
+        }
     };
     
     return (
@@ -35,8 +37,12 @@ const RegistrationPassword = () => {
                 </div>
 
                 <div className="container-submit-button">
+               
                     <Link to="/login">
-                        <button type="submit" className="button button-small">Create Account</button>
+                        <button type="submit" onClick={handleSubmit} className="button button-small">
+                            Create Account
+                        </button>
+                        {error && <p className="error-message">{error}</p>}
                     </Link>
                 </div>
             </form>

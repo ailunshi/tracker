@@ -7,6 +7,7 @@ import RegistrationEmail from './pages/registration-email'
 import RegistrationPassword from './pages/registration-password'
 import Login from './pages/login'
 import Tracker from './pages/tracker'
+import PrivateRoute from './hocs/PrivateRoute'
 
 
 function App() {
@@ -17,7 +18,14 @@ function App() {
       <Route path="/registration-email" element={<RegistrationEmail />} />
       <Route path="/registration-password" element={<RegistrationPassword />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/tracker" element={<Tracker />} />
+      <Route
+        exact path='/tracker'
+        element={
+          <PrivateRoute>
+            <Tracker />
+          </PrivateRoute>
+        }
+      />
     </Routes>
   );
 };

@@ -12,11 +12,16 @@ export const AuthProvider = ({ children }) => {
 
     const getCsrfToken = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/csrf/', {
+            await fetch('http://localhost:8000/api/csrf/', {
                 credentials: 'include', // ✅ This sets the session cookie
             });
-            const data = await response.json();
-            return data.csrfToken; // ✅ Return the CSRF token
+            
+            const csrfToken = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('csrftoken='))
+                ?.split('=')[1];
+
+                return csrfToken;
         } catch (error) {
             console.error('Error fetching CSRF token:', error);
         }
