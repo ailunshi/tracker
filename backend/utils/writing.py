@@ -22,7 +22,7 @@ class Writing:
         writing_instance.call_writing_streamlined()"""
 
 def get_word_count(file_path):
-    project_file = os.path.join(file_path, "stories.scrivx")
+    project_file = os.path.join(file_path, "Bel e Kyre.scrivx")
     data = "".join(file_path, "Files/Data")
     parser = ScrivxParser(data, project_file)
     parser.parse_scrivx_file()

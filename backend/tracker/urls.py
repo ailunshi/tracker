@@ -25,6 +25,10 @@ from writingsession.views import (
     get_csrf_token,
     register_view
 )
+from .views import (
+    StartTrackerView,
+    StopTrackerView,
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -36,4 +40,6 @@ urlpatterns = [
     path("api/user/", user_info, name="user-info"),
     path("api/csrf/", get_csrf_token, name="get-csrf-token"),
     path("api/register/", register_view, name="register"),
+    path('api/start_tracker/', StartTrackerView.as_view(), name='start-tracker'),
+    path('api/stop_tracker/', StopTrackerView.as_view(), name='stop-tracker'),
 ]

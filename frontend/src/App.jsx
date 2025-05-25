@@ -9,7 +9,6 @@ import Login from './pages/login'
 import Tracker from './pages/tracker'
 import PrivateRoute from './hocs/PrivateRoute'
 
-
 function App() {
   return (
     <Routes>
