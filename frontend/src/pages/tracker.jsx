@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import { Stopwatch } from '../components/Stopwatch/Stopwatch.jsx'
 
 const Tracker = () => {
     const { logout } = useAuth();
 
+    {/*
     const [startTime, setStartTime] = useState(null);
     const [endTime, setEndTime] = useState(null);
     const [wordStart, setWordState] = useState(0);
     const [wordEnd, setWordEnd] = useState(0);
 
     const startTracker = async () => {
+        { Stopwatch }
         const res = await fetch('http://localhost:8000/api/tracker/start/', {
             method: 'POST',
             credentials: 'include'
@@ -32,11 +35,14 @@ const Tracker = () => {
 
     const elapsedTime = startTime && endTime ? Math.round(endTime - startTime) : null;
     const wordDelta = wordStart && wordEnd ? wordEnd - wordState : null;
-
+*/}
     return (
         <div className="landing-page-container">
             <h1 className="frontTitle">Writing Productivity Tracker</h1>
 
+            <Stopwatch/>
+
+{/*}
             <div className="container-horizontal">
                 <button 
                     className="button button-big"
@@ -53,7 +59,7 @@ const Tracker = () => {
                 >
                     Stop Tracker
                 </button>
-            </div>
+            </div>*/}
 
             <div>
                 <Link
@@ -76,7 +82,7 @@ const Tracker = () => {
             </div>
         </div>
 
-    )
-}
+    );
+};
 
 export default Tracker;

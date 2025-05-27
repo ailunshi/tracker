@@ -221,6 +221,33 @@ body {
   height: 100px;
 }
 
+.controlButton-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.stopwatch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.digit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.digits {
+  font-size: 96px;
+  font-weight: bold;
+  color: var(--mulberry);
+}
+
 
 /* UnderlineInput Component Styles */
 .underline-input-container {

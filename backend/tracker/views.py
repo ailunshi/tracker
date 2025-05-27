@@ -7,6 +7,7 @@ from utils import writing
 SCRIV_FILE_PATH = "/Users/balloon/Bel e Kyre/Bel e Kyre.scriv/"
 
 class StartTrackerView(APIView):
+    print("we are in the class")
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
