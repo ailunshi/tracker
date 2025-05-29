@@ -7,7 +7,8 @@ export const ControlButtons = (props) => {
             Start Tracker
         </div>
     );
-    
+
+
     const ActiveButtons = (
         <div className="controlButton-container">
             <div

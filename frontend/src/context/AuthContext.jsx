@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
     const getCsrfToken = async () => {
         try {
-            await fetch('http://localhost:8000/api/csrf/', {
+            await fetch('http://localhost:8000/accounts/csrf_cookie/', {
                 credentials: 'include', // ✅ This sets the session cookie
             });
             
@@ -31,14 +31,14 @@ export const AuthProvider = ({ children }) => {
         try {
             const csrfToken = await getCsrfToken(); // ✅ First get CSRF token
     
-            const response = await fetch('http://localhost:8000/api/login/', {
+            const response = await fetch('http://localhost:8000/accounts/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': csrfToken, // ✅ Send CSRF token here
                 },
                 credentials: 'include', // ✅ Include session cookie
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ email: username, password }),
             });
     
             if (!response.ok) {
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await fetch('http://localhost:8000/api/logout/', {
+            await fetch('http://localhost:8000/accounts/logout/', {
                 method: 'POST',
                 credentials: 'include',
             });
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
 
     const fetchUserData = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/user/', {
+            const response = await fetch('http://localhost:8000/accounts/user/', {
                 credentials: 'include',
             });
             if (response.ok) {

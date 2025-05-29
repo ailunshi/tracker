@@ -8,6 +8,9 @@ export const Stopwatch = () => {
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(true);
     const [time, setTime] = useState(0);
+    const [sessionID, setSessionID] = useState(null);
+    const [startCount, setStartCount] = useState(0);
+    const [endCount, setEndCount] = useState(0);
 
     useEffect(() => {
         let interval = null;
@@ -23,16 +26,39 @@ export const Stopwatch = () => {
         return () => clearInterval(interval);
     }, [isActive, isPaused]);
 
-    const handleStart = () => {
+    const handleStart = async () => {
+
+        const res = await fetch('http://localhost:8000/api/writingsession/start', {
+            method: 'POST',
+            credentials: 'include',
+        });
+        const data = await res.json();
+        setSessionID(data.session_id);
+        setStartCount(data.start_count);
+
+        // This section for maintaining stopwatch on frontend
         setIsActive(true);
         setIsPaused(false);
     };
 
     const handlePauseResume = () => {
+        // need to set pause/resume functionality on backend
+
         setIsPaused(!isPaused);
     };
 
-    const handleReset = () => {
+    const handleReset = async () => {
+        const res = await fetch('http://localhost:8000/api/writingsession/end', {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify({ session_id: sessionID }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await res.json();
+        setEndCount(data.end_count);
+
         setIsActive(false);
         setIsPaused(true);
         setTime(0);
@@ -48,7 +74,13 @@ export const Stopwatch = () => {
                 handlePauseResume={handlePauseResume}
                 handleReset={handleReset}
             />
+            
+            <p>Words at start: { startCount } </p>
+            <p>Words at end: { endCount } </p>
+
         </div>
+        
+        
     );
 };
 
