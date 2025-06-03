@@ -14,6 +14,9 @@ class StartTrackerView(APIView):
 
     def post(self, request):
         user = request.user
+        #check if get_word_count function is working:
+        word_count = writing.get_word_count(SCRIV_FILE_PATH)
+ 
         word_count = writing.get_word_count(SCRIV_FILE_PATH)
         session = WritingSession.objects.create(user=user, word_count_start=word_count)
         return Response({

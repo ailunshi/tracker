@@ -60,7 +60,6 @@ class LoginView(APIView):
     permission_classes = (permissions.AllowAny, )
 
     def post(self, request, format=None):
-        print("what is going on")
         data = self.request.data
 
         username = data['email']

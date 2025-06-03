@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { ControlButtons } from './ControlButtons.jsx';
+import CSRFToken from '../CSRFToken.jsx';
 
 export const Stopwatch = () => {
-    console.log("Stopwatch component rendered");
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(true);
     const [time, setTime] = useState(0);
@@ -27,11 +27,23 @@ export const Stopwatch = () => {
     }, [isActive, isPaused]);
 
     const handleStart = async () => {
+        const csrftoken = await CSRFToken();
 
-        const res = await fetch('http://localhost:8000/api/writingsession/start', {
+        const res = await fetch('http://localhost:8000/writingsession/start/', {
             method: 'POST',
-            credentials: 'include',
-        });
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken, // ✅ Send CSRF token here
+                },
+                credentials: 'include',
+                //body: JSON.stringify({})
+            });
+
+        if (!res.ok) {
+            console.error("Request failed with status", res.status);
+            return;
+        }
+
         const data = await res.json();
         setSessionID(data.session_id);
         setStartCount(data.start_count);
@@ -48,17 +60,27 @@ export const Stopwatch = () => {
     };
 
     const handleReset = async () => {
-        const res = await fetch('http://localhost:8000/api/writingsession/end', {
+        const csrftoken = await CSRFToken();
+        // Send response to backend to end the writing session
+        const res = await fetch('http://localhost:8000/writingsession/stop/', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify({ session_id: sessionID }),
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken,
+            },
         });
+
+        if (!res.ok) {
+            console.error("Request failed with status", res.status);
+            return;
+        }
+
         const data = await res.json();
         setEndCount(data.end_count);
 
+        // Set frontend stopwatch to initial state
         setIsActive(false);
         setIsPaused(true);
         setTime(0);
