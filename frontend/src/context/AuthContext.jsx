@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const getCsrfToken = async () => {
         try {
             await fetch('http://localhost:8000/accounts/csrf_cookie/', {
-                credentials: 'include', // ✅ This sets the session cookie
+                credentials: 'include', 
             });
             
             const csrfToken = document.cookie
@@ -29,17 +29,19 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
-            const csrfToken = await getCsrfToken(); // ✅ First get CSRF token
+            const csrfToken = await getCsrfToken();
     
             const response = await fetch('http://localhost:8000/accounts/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken, // ✅ Send CSRF token here
+                    'X-CSRFToken': csrfToken,
                 },
-                credentials: 'include', // ✅ Include session cookie
+                credentials: 'include',
                 body: JSON.stringify({ email: username, password }),
             });
+
+            console.log('login response is :', response);
     
             if (!response.ok) {
                 throw new Error('Login failed');

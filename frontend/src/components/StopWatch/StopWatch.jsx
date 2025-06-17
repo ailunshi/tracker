@@ -33,10 +33,9 @@ export const Stopwatch = () => {
             method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken, // ✅ Send CSRF token here
+                    'X-CSRFToken': csrftoken,
                 },
                 credentials: 'include',
-                //body: JSON.stringify({})
             });
 
         if (!res.ok) {
@@ -101,8 +100,6 @@ export const Stopwatch = () => {
             <p>Words at end: { endCount } </p>
 
         </div>
-        
-        
     );
 };
 

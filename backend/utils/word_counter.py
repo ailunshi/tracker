@@ -1,7 +1,5 @@
 import re
 
-
-
 def word_count(content):
     """
     Splits on space. Splits on em dash after a word UNLESS

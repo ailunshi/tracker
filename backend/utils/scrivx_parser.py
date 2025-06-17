@@ -1,9 +1,6 @@
 import os
 import xml.etree.ElementTree as ET
 import pypandoc
-import re
-import argparse
-import time
 from multiprocessing import Pool
 from .word_counter import word_count
 

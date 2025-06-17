@@ -8,7 +8,6 @@ export const ControlButtons = (props) => {
         </div>
     );
 
-
     const ActiveButtons = (
         <div className="controlButton-container">
             <div

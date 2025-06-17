@@ -47,7 +47,7 @@ export const RegisterProvider = ({ children }) => {
             });
 
             // First get CSRF token
-            const csrfResponse = await fetch('http://localhost:8000/api/csrf/', {
+            const csrfResponse = await fetch('http://localhost:8000/accounts/csrf/', {
                 credentials: 'include',
             });
             console.log('CSRF token fetch status:', csrfResponse.status);
@@ -63,8 +63,7 @@ export const RegisterProvider = ({ children }) => {
             }
 
             // Register the user
-
-            const response = await fetch('http://localhost:8000/api/register/', {
+            const response = await fetch('http://localhost:8000/accounts/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -72,10 +71,11 @@ export const RegisterProvider = ({ children }) => {
                 },
                 credentials: 'include',
                 body: JSON.stringify({
-                    username: formData.email,  // Using email as username
                     email: formData.email,
                     password: formData.password,
-                    name: formData.name
+                    re_password: formData.password,
+                    first_name: formData.name.split(" ")[0] || "",  // crude split
+                    last_name: formData.name.split(" ").slice(1).join(" ") || ""
                 }),
             });
 

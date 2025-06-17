@@ -11,6 +11,12 @@ function Login() {
 
     async function handleLogin(event) {
         event.preventDefault();
+
+        if (!email || !password) {
+            setMessage("Please fill in all fields.");
+            return;
+        }
+        
         try {
             await login(email, password);
             navigate('/tracker'); // Redirect on success

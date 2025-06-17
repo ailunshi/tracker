@@ -1,4 +1,3 @@
-import time
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
@@ -14,10 +13,12 @@ class StartTrackerView(APIView):
 
     def post(self, request):
         user = request.user
+
+        print(f"checking user info: {request.user} and {request.META['CSRF_COOKIE']}")
+        
         #check if get_word_count function is working:
         word_count = writing.get_word_count(SCRIV_FILE_PATH)
- 
-        word_count = writing.get_word_count(SCRIV_FILE_PATH)
+        print(f"Current word count: {word_count}")
         session = WritingSession.objects.create(user=user, word_count_start=word_count)
         return Response({
             "session_id": session.id,

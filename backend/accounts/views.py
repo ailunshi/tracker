@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import permissions
+from rest_framework import permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
@@ -48,12 +48,17 @@ class SignupView(APIView):
 
                 UserProfile.objects.create(user=user, first_name=first_name, last_name=last_name, email=username)
 
-                return Response({'success': 'Account created successfully.'})
+                return Response(
+                    {'success': 'Account created successfully.'},
+                    status=status.HTTP_201_CREATED
+                )
 
         except Exception as e:
             print("Error:", e)
-            return Response({'error': str(e)})
-            #return Response({'error': 'Something went wrong while signing up for a new account.'})
+            return Response(
+                {'error': str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 @method_decorator(csrf_protect, name='dispatch')
 class LoginView(APIView):
@@ -61,9 +66,14 @@ class LoginView(APIView):
 
     def post(self, request, format=None):
         data = self.request.data
-
         username = data['email']
         password = data['password']
+
+        if not username or not password:
+            return Response(
+                {'error': 'Email and password are required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
 
         try:
             user = auth.authenticate(username=username, password=password)
@@ -72,10 +82,16 @@ class LoginView(APIView):
                 auth.login(request, user)
                 return Response({'success': 'User authenticated'})
             else:
-                return Response({'error': 'Error authenticating user'})
+                return Response(
+                    {'error': 'Error authenticating user'},
+                    status=status.HTTP_401_UNAUTHORIZED
+                )
         except Exception as e:
             print("Login error:", e)
-            return Response({'error': str(e)})
+            return Response(
+                {'error': str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 class LogoutView(APIView):
     def post(self, request, format=None):
