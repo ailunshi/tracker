@@ -86,8 +86,6 @@ export const RegisterProvider = ({ children }) => {
             if (!response.ok) {
                 throw new Error(data.error || data.detail || 'Registration failed');
             }
-
-            await login(formData.email, formData.password);
             
             // Clear form data
             setFormData({

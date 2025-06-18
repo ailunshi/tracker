@@ -99,7 +99,10 @@ class LogoutView(APIView):
             auth.logout(request)
             return Response({'success': 'User logged out successfully'})
         except:
-            return Response({'error': 'Something went wrong while logging out.'})
+            return Response(
+                {'error': 'Something went wrong while logging out.'}, 
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
         
 class GetCSRFToken(APIView):
     permission_classes = (permissions.AllowAny, )
@@ -127,4 +130,16 @@ class DeleteUserView(APIView):
 
             return Response({'success': 'User deleted successfully'})
         except:
-            return Response({'error': 'Something went wrong while deleting user.'})
+            return Response(
+                {'error': 'Something went wrong while deleting user.'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+        
+class CheckUserAuthenticatedView(APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def get(self, request, format=None):
+        if request.user.is_authenticated:
+            return Response({'is_authenticated': True})
+        else:
+            return Response({'error': False}, status=status.HTTP_401_UNAUTHORIZED)
