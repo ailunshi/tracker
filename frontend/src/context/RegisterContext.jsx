@@ -47,7 +47,7 @@ export const RegisterProvider = ({ children }) => {
             });
 
             // First get CSRF token
-            const csrfResponse = await fetch('http://localhost:8000/accounts/csrf/', {
+            const csrfResponse = await fetch('http://localhost:8000/accounts/csrf_cookie/', {
                 credentials: 'include',
             });
             console.log('CSRF token fetch status:', csrfResponse.status);
@@ -94,8 +94,6 @@ export const RegisterProvider = ({ children }) => {
                 password: "",
             });
 
-            // Navigate to tracker page
-            navigate('/tracker');
             return true;
         } catch (error) {
             console.error('Registration error:', error);
