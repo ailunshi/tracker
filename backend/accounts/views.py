@@ -139,7 +139,11 @@ class CheckUserAuthenticatedView(APIView):
     permission_classes = (permissions.AllowAny, )
 
     def get(self, request, format=None):
-        if request.user.is_authenticated:
-            return Response({'is_authenticated': True})
-        else:
-            return Response({'error': False}, status=status.HTTP_401_UNAUTHORIZED)
+        try:
+            msg = request.user.is_authenticated
+            return Response({'is_authenticated': msg})
+        except:
+            return Response(
+                {'error': False}, 
+                status=status.HTTP_401_UNAUTHORIZED
+            )

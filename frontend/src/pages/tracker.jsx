@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
-import { Stopwatch } from '../components/StopWatch/Stopwatch.jsx'
+import { Stopwatch } from '../components/StopWatch/StopWatch.jsx'
 
 const Tracker = () => {
     const { logout } = useAuth();
