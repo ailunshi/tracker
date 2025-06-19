@@ -76,15 +76,6 @@ body {
   margin-top: 10rem;
 }
 
-.login-left {
-  flex: 2;
-  background-color: var(--smoked-verbena);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .form-container {
   display: flex;
   flex-direction: column;
@@ -93,7 +84,16 @@ body {
   width: 100%;
 }
 
-.login-right {
+.login-left, .sidebar {
+  flex: 2;
+  background-color: var(--smoked-verbena);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-right, .main-content {
   flex: 3;
   background-color: var(--white);
   display: flex;
@@ -102,6 +102,45 @@ body {
   align-items: center;
   padding-left: 50px;
   width: 100%;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: var(--white);
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.main-content {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--distant-lilac);
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+.header-container {
+  background-color: var(--white);
+  height: 70px;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.profile-header {
+  background-color: var(--smoked-verbena);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  padding: 0 20px;
+  border-radius: 30px;
 }
 
 .frontTitle {
@@ -176,6 +215,20 @@ body {
   border-radius: 15px;
 }
 
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: var(--mulberry);
+}
+
 .button:hover {
   opacity: 0.8;
 }
@@ -210,7 +263,20 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
 
+.home-logo {
+  color: var(--mulberry);
+  font-size: 24px;
+  font-weight: bold;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+@media (max-width: 600px) {
+  .home-logo {
+    font-size: 16px;
+  }
 }
 
 .topRight {

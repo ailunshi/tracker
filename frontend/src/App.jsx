@@ -8,6 +8,7 @@ import RegistrationPassword from './pages/registration-password'
 import Login from './pages/login'
 import Tracker from './pages/tracker'
 import PrivateRoute from './hocs/PrivateRoute'
+import Dashboard from './pages/dashboard'
 
 function App() {
   return (
@@ -17,11 +18,13 @@ function App() {
       <Route path="/registration-email" element={<RegistrationEmail />} />
       <Route path="/registration-password" element={<RegistrationPassword />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<Dashboard />} /> {/* move dashboard to private later */}
       <Route
         exact path='/tracker'
         element={
           <PrivateRoute>
             <Tracker />
+            
           </PrivateRoute>
         }
       />
