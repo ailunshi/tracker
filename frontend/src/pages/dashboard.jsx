@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 
 const Dashboard = () => {
     return (
@@ -9,11 +9,28 @@ const Dashboard = () => {
                 <h1 className="home-logo">writing tracker</h1>
                 
                 <a href="#">HOME</a>
+                
                 <a href="#">PROJECTS</a>
+
+                <div className="dropdown-container">
+                    <button className="button button-new-project">New Project +</button>
+
+                    <div className="project-list">
+                        <ul>
+                            <li>Project 1</li>
+                            <li>Project 2</li>
+                            <li>Project 3</li>
+                            <li>Project 4</li>
+                            <li>Project 5</li>
+                        </ul>
+                    </div>
+                        
+                </div>
                     {/* need a dropdown for individual projects 
                     
                     this would need to be a model with ORM to writing sessions
                     (ie. one project can have multiple sessions)*/}
+                
 
             </div>
 

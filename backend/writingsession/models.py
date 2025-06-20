@@ -11,3 +11,8 @@ class WritingSession(models.Model):
     word_count_start = models.IntegerField(default=0)
     word_count_end = models.IntegerField(default=0)
    
+class Projects(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+
+    # need to link this to writing session
