@@ -10,6 +10,7 @@ class WritingSession(models.Model):
     end_time = models.DateTimeField(null=True, blank=True)
     word_count_start = models.IntegerField(default=0)
     word_count_end = models.IntegerField(default=0)
+    # need to add in foreign key to link to projects
    
 class Projects(models.Model):
     name = models.CharField(max_length=100)

@@ -147,3 +147,18 @@ class CheckUserAuthenticatedView(APIView):
                 {'error': False}, 
                 status=status.HTTP_401_UNAUTHORIZED
             )
+        
+class GetCurrentUserView(APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def get(self, request, format=None):
+        user = self.request.user
+
+        if user.is_authenticated:
+            user_data = UserSerializer(user).data
+            return Response(user_data)
+        else:
+            return Response(
+                {'error': 'User is not authenticated'},
+                status=status.HTTP_401_UNAUTHORIZED
+            )

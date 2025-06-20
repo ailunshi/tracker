@@ -5,6 +5,8 @@ import { Stopwatch } from '../components/StopWatch/StopWatch.jsx'
 
 const Tracker = () => {
     const { logout } = useAuth();
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null);
 
     return (
         <div className="landing-page-container">

@@ -1,6 +1,36 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Dashboard = () => {
+    const [user, setUser] = useState({
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: ''
+    });
+
+    const getUserInfo = async () => {
+        const response = await fetch('http://localhost:8000/accounts/current_user/', {
+            method: 'GET',
+            credentials: 'include',
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch user information');
+        }
+
+        const { username, first_name, last_name, email } = await response.json();
+        setUser({ username, first_name, last_name, email });
+
+        return { username, first_name, last_name, email };
+    };
+
+    useEffect(() => {
+        getUserInfo();
+    }, []);
+
+    console.log('User info:', user);
+
     return (
 
         <div className="login-container"> {/*ie. container for the whole thing*/}
@@ -40,7 +70,7 @@ const Dashboard = () => {
 
                     <div className="profile-header"> {/*ie. user profile icon*/}
 
-                        <p style={{color: "var(--white)"}}>USER NAME IS HERE</p>
+                        <p style={{color: "var(--white)"}}>{ user.first_name } { user.last_name } </p>
                         
                     </div>
 
