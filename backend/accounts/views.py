@@ -44,7 +44,7 @@ class SignupView(APIView):
             elif len(password) < 8:
                 return Response({'error': 'Password must be at least 8 characters long.'})
             else:
-                user = User.objects.create_user(username=username, password=password)
+                user = User.objects.create_user(username=username, password=password, email=username, first_name=first_name, last_name=last_name)
 
                 UserProfile.objects.create(user=user, first_name=first_name, last_name=last_name, email=username)
 
@@ -156,6 +156,7 @@ class GetCurrentUserView(APIView):
 
         if user.is_authenticated:
             user_data = UserSerializer(user).data
+            print("User data:", user_data)
             return Response(user_data)
         else:
             return Response(

@@ -70,7 +70,7 @@ const Dashboard = () => {
 
                     <div className="profile-header"> {/*ie. user profile icon*/}
 
-                        <p style={{color: "var(--white)"}}>{ user.first_name } { user.last_name } </p>
+                        <p style={{color: "var(--white)", textTransform: "uppercase"}}>{ user.first_name } { user.last_name } </p>
                         
                     </div>
 

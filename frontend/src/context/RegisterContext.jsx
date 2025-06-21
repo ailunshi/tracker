@@ -11,8 +11,6 @@ export const RegisterProvider = ({ children }) => {
         password: "",
     });
     const [error, setError] = useState("");
-    const { login } = useAuth();
-    const navigate = useNavigate();
 
     const updateFormData = (field, value) => {
         setFormData((prevData) => ({
@@ -74,14 +72,13 @@ export const RegisterProvider = ({ children }) => {
                     email: formData.email,
                     password: formData.password,
                     re_password: formData.password,
-                    first_name: formData.name.split(" ")[0] || "",  // crude split
-                    last_name: formData.name.split(" ").slice(1).join(" ") || ""
+                    first_name: formData.name.split(" ")[0] || "",
+                    last_name: formData.name.split(" ").slice(-1).join(" ") || ""
                 }),
             });
 
             console.log('Registration response status:', response.status);
             const data = await response.json();
-            console.log('Registration response data:', data);
 
             if (!response.ok) {
                 throw new Error(data.error || data.detail || 'Registration failed');

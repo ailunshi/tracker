@@ -15,7 +15,7 @@ const RegistrationName = () => {
                     type="text"
                     className="input"
                     value={formData.name}
-                    onChange={(e) => updateFormData('name', e.target.value)}
+                    onChange={(e) => updateFormData("name", e.target.value)}
                     placeholder="Jade Isel"
                 />
             </div>
